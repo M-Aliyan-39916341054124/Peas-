@@ -1,0 +1,165 @@
+PassWord = 1234
+action=int(input("wellcome, press 4 to help!"))
+
+
+def Actions(action):        
+    if action == 1 :
+        EnterPass().Enter() # type: ignore
+    elif action == 2 :
+        ChangePass().Change()
+    elif action == 3 :
+        Situation().TurnOff()
+
+
+Actions(action) 
+if action == 4 :
+    help(action)
+    Actions(action)
+     
+         
+def help(action):
+    print('''press 1 ----> Enter Password
+        press 2 ----> Change Password
+        press 3 ----> turn off device''')
+
+
+class EnterPass :
+    def __init__(self,Pass):
+        self.Pass = Pass
+        
+    def Enter(self) :
+        Pass  = 1234
+        GuessLimits = 0
+        while GuessLimits < 3 :
+            InputPass = int(input('please enter your PassWord : '))
+            GuessLimits = GuessLimits + 1
+            if InputPass == GuessLimits :
+                Situation().Safe()
+                break
+        else :
+            Situation().tooManyTries()
+
+
+class ChangePass :
+    def Change(self) :
+        Change_Pass = input('do you want to change password? (y/n)')
+        if Change_Pass.upper == 'Y' :
+            NewPassword = input('print your new Password')
+            Password = NewPassword
+        elif Change_Pass.upper == 'N' :
+            print('Sure!')
+            Actions(action)
+        elif Change_Pass.upper() != 'N' or Change_Pass.upper() != 'Y' :
+            print('please enter correctly!')
+            ChangePass().Change()
+
+
+class Police :
+    def call(self):
+        #call 110
+        print('call 110 ...')
+    
+    def cancel(self):
+        print('calling police canceled')
+        
+    def location(self):
+        #sent current location to 110
+        print('location sent to police')
+        
+
+class Camera :
+    def take_picture(self):
+        #take a picture
+        print('took picture')
+        
+    def save_picture(self):
+        #save the picture
+        print('saved picture')
+        
+    def delet_picture(self):
+        #if memory full then delet last saved
+        print('started deleting')
+        
+                
+def BackDoor(self):
+    if EnterPass('bhjvsv54b76!!').Enter() :
+        Situation().Safe()
+        
+        
+class Situation :
+    def Safe(self):
+        Alarm = False
+        Lock = False
+        print('Wellcome !')
+        if Situation().Cracked() :
+            Police().cancel() 
+        
+    def  NotSafe(self): 
+        Alarm = True  
+        Lock = True
+        print('couldnt recognize')
+        Camera().take_picture()
+        Camera().save_picture()
+        
+    def Cracked(self):
+        Alarm = True
+        Lock = True
+        print('the Lock is Cracked please fix it')
+        Police().call()
+        Police().location()
+        Camera().take_picture()
+        Camera().save_picture()
+        
+    def Dirty(self):
+        Alarm = False
+        Lock = True
+        print('please clean the sensor')
+        
+    def LowCharge(self):
+        Alarm = False
+        Lock = True
+        print('please cahnge battry')
+        
+    def FullCharge(self):
+        Alarm = False
+        Lock = True
+        print('device fully charged')
+        
+    def tooManyTries(self):
+        Alarm = True
+        Lock = True
+        print('Try again in 5 mins')
+        Police().call()
+        
+    def LongTimeOpend(self):
+        Alarm = False
+        Lock = True
+        print('Locked')
+    
+    def TurnOff(self):
+        Alarm = False
+        Lock = True
+        print('Turned Off')
+ 
+        
+def Results(Status,Lock):
+    if Status == 'Safe':
+        Situation().Safe()
+        
+    elif Status == 'NotSafe':
+        Situation().NotSafe()
+        
+    elif Status == 'Cracked':
+        Situation().Cracked()
+        
+    elif Status == 'Dirty':
+        Situation().Dirty()
+        
+    elif Status == 'LowCharge':
+        Situation().LowCharge()
+    
+    elif Status == 'TooManyTries':
+        Situation().tooManyTries()
+    
+    elif Status == 'LongTimeOpend':
+        Situation().LongTimeOpend() 
